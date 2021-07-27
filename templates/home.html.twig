@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon application</title>
+</head>
+<body>
+    <h1>{{ title }}</h1>
+    <p>Comment allez-vous ?</p>
+    {% if age >= 18 %}
+        <p>Vous êtes un adulte !</p>
+    {% elseif age >= 12 %}
+        <p>Vous êtes un adolescent !</p>
+    {% elseif age < 12 and age > 2 %}
+        <p>Vous êtes un enfant !</p>
+    {% else %}
+        <p>Vous êtes un bébé !</p>
+    {% endif %}
+
+    {% for prenom, age in tableau %}
+        <p>({{ loop.first }}) : {{ prenom }} a {{ age }} an(s)</p>
+    {% endfor %}
+
+</body>
+</html>
