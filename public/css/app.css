@@ -25,3 +25,11 @@ a {
 a:hover {
     text-decoration: underline !important;
 }
+
+div.form-group {
+    padding-bottom: 2% !important;
+}
+
+h1.title-newAd {
+    padding-bottom: 2% !important;
+}

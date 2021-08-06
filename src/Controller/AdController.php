@@ -5,6 +5,9 @@ namespace App\Controller;
 use App\Entity\Ad;
 use App\Form\AdType;
 use App\Repository\AdRepository;
+use Doctrine\Persistence\ObjectManager;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -35,11 +38,29 @@ class AdController extends AbstractController
      * @return Response
      */
 
-    public function create(): Response
-    {
+    public function create(Request $request, EntityManagerInterface $manager): Response {
+
         $ad = new Ad();
 
         $form = $this->createForm(AdType::class, $ad);
+
+        $form->handleRequest($request);
+        
+        // dump($ad); sert à connaitre les infos sur l'annonce ($ad) envoyées grace au handleRequest
+        if($form->isSubmitted() && $form->isValid()) {
+
+            // $manager = $this->getDoctrine()->getManager(); ----- Pas besoin de cette ligne de code si on injecte les dépendences dans la fonction "create" avec EntityManagerInterface et $manager
+            $manager->persist($ad);
+            $manager->flush();
+
+            $this->addFlash(
+                'success', "L'annonce <strong>{$ad->getTitle()}</strong> a bien été enregistrée !"
+            );
+
+            return $this->redirectToRoute('ads_show', [
+                'slug' => $ad->getSlug(),
+            ]);
+        }
 
         return $this->render('ad/new.html.twig', [
 
