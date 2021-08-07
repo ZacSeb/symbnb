@@ -24,7 +24,7 @@
             <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-indicators">
                     {% for image in ad.images %}
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ loop.index0 }}" {% if loop.first %}class="active"{% endif %} aria-current="true" aria-label="Slide 1"></button>    
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ loop.index0 }}" {% if loop.first %} class="active"{% endif %} aria-current="true" aria-label="Slide 1"></button>    
                     {% endfor %}
                  
                 </div>

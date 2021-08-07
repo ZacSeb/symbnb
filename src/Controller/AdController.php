@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Ad;
 use App\Form\AdType;
+use App\Entity\Image;
 use App\Repository\AdRepository;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\ORM\EntityManagerInterface;
@@ -48,6 +49,10 @@ class AdController extends AbstractController
         
         // dump($ad); sert à connaitre les infos sur l'annonce ($ad) envoyées grace au handleRequest
         if($form->isSubmitted() && $form->isValid()) {
+            foreach($ad->getImages() as $image) {
+                $image->setAd($ad);
+                $manager->persist($image);
+            }
 
             // $manager = $this->getDoctrine()->getManager(); ----- Pas besoin de cette ligne de code si on injecte les dépendences dans la fonction "create" avec EntityManagerInterface et $manager
             $manager->persist($ad);
@@ -65,6 +70,46 @@ class AdController extends AbstractController
         return $this->render('ad/new.html.twig', [
 
             'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * Permet d'afficher le formulaire d'édition (modification du formulaire nouvelle annonce)
+     * 
+     * @Route("/ads/{slug}/edit", name="ads_edit")
+     * 
+     * @return Response
+     */
+
+    public function edit(Ad $ad, Request $request, EntityManagerInterface $manager) {
+
+        $form = $this->createForm(AdType::class, $ad);
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()) {
+            foreach($ad->getImages() as $image) {
+                $image->setAd($ad);
+                $manager->persist($image);
+            }
+
+            // $manager = $this->getDoctrine()->getManager(); ----- Pas besoin de cette ligne de code si on injecte les dépendences dans la fonction "create" avec EntityManagerInterface et $manager
+            $manager->persist($ad);
+            $manager->flush();
+
+            $this->addFlash(
+                'success', "Les modifications de l'annonce <strong>{$ad->getTitle()}</strong> ont bien été enregistrée !"
+            );
+
+            return $this->redirectToRoute('ads_show', [
+                'slug' => $ad->getSlug(),
+            ]);
+        }
+
+        return $this->render('ad/edit.html.twig', [
+
+            'form' => $form->createView(),
+            'ad' => $ad
         ]);
     }
 
