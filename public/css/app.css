@@ -33,3 +33,24 @@ div.form-group {
 h1.title-newAd {
     padding-bottom: 1% !important;
 }
+
+.NumberAnnonce {
+    font-weight: normal !important;
+    font-size: 1rem !important;
+}
+
+.avatar {
+    max-width: 128px;
+    max-height: 128px;
+    border-radius: 50%;
+}
+
+.avatar-medium {
+    max-width: 64px;
+    max-height: 64px;
+}
+
+.avatar-mini {
+    max-width: 35px;
+    max-height: 35px;
+}

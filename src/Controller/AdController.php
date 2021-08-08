@@ -6,7 +6,6 @@ use App\Entity\Ad;
 use App\Form\AdType;
 use App\Entity\Image;
 use App\Repository\AdRepository;
-use Doctrine\Persistence\ObjectManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -53,6 +52,8 @@ class AdController extends AbstractController
                 $image->setAd($ad);
                 $manager->persist($image);
             }
+
+            $ad->setAuthor($this->getUser());
 
             // $manager = $this->getDoctrine()->getManager(); ----- Pas besoin de cette ligne de code si on injecte les dépendences dans la fonction "create" avec EntityManagerInterface et $manager
             $manager->persist($ad);
