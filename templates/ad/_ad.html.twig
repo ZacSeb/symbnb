@@ -7,7 +7,7 @@
         </div>
 
         <a href="{{ url }}">
-            <img src="{{ ad.coverImage }}" alt="Im	ge de l'appartement" style="height : 200px; width: 100%; display: block;">
+            <img src="{{ ad.coverImage }}" alt="Image de l'appartement" style="height : 200px; width: 100%; display: block;">
         </a>
         
         <div class="card-body">
@@ -20,6 +20,10 @@
                 {{ ad.introduction }}
             </p>
             <a href="{{ url }}" class="btn btn-secondary">En savoir plus!</a>
+
+            {% if app.user and app.user == ad.author %}
+                <a href="{{ path('ads_edit', {'slug': ad.slug}) }}" class="btn btn-secondary">Modifier l'annonce</a>
+            {% endif %}
         </div>
     </div>
 </div>
