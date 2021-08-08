@@ -54,3 +54,7 @@ h1.title-newAd {
     max-width: 35px;
     max-height: 35px;
 }
+
+.datepicker table tr td.disabled, .datepicker table tr td.disabled:hover {
+    color: #BD1111 !important;
+}

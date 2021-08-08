@@ -142,7 +142,7 @@ class AdController extends AbstractController
      * @param EntityManagerInterface $manager
      * @return Response
      */
-    public function delete(Ad $ad, Request $request, EntityManagerInterface $manager) {
+    public function delete(Ad $ad, EntityManagerInterface $manager) {
         $manager->remove($ad);
         $manager->flush();
 
