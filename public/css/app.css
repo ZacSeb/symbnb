@@ -58,3 +58,8 @@ h1.title-newAd {
 .datepicker table tr td.disabled, .datepicker table tr td.disabled:hover {
     color: #BD1111 !important;
 }
+
+span.rating i {
+    color: goldenrod;
+    stroke: black;
+}
