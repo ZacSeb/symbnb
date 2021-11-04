@@ -13,6 +13,13 @@ div.ad-title h1, div.ad-title p, div.ad-title h5 {
     text-shadow: 3px 3px 3px rgba(0,0,0,0,5);
 }
 
+div.ad-title .btn {
+    margin-top: 2em;
+    font-size: 1.5em;
+    line-height: 1.5em;
+} 
+
+
 div.carousel-caption, div.carousel-caption h5 {
    text-shadow: 3px 3px 3px rgba(0,0,0,0,5); 
    color: white !important;
@@ -27,11 +34,7 @@ a:hover {
 }
 
 div.form-group {
-    padding-bottom: 1% !important;
-}
-
-h1.title-newAd {
-    padding-bottom: 1% !important;
+    padding-bottom: 2% !important;
 }
 
 .NumberAnnonce {
@@ -55,6 +58,11 @@ h1.title-newAd {
     max-height: 35px;
 }
 
+.avatar-micro {
+    max-width: 28px;
+    max-height: 28px;
+}
+
 .datepicker table tr td.disabled, .datepicker table tr td.disabled:hover {
     color: #BD1111 !important;
 }
@@ -62,4 +70,16 @@ h1.title-newAd {
 span.rating i {
     color: goldenrod;
     stroke: black;
+}
+
+.alert a {
+    text-decoration: none;
+}
+
+.alert .btn {
+    color: white;
+}
+
+.btn {
+    border-radius: 15px;
 }

@@ -40,6 +40,13 @@ class Comment
      */
     private $ad;
 
+    
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="comments")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $author;
+    
     /**
      * Permet de mettre en place la date de création
      * 
@@ -52,13 +59,7 @@ class Comment
             $this->createdAt = new \DateTime();
         }
     }
-
-    /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="comments")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $author;
-
+    
     public function getId(): ?int
     {
         return $this->id;

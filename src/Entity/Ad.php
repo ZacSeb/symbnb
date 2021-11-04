@@ -119,7 +119,7 @@ class Ad
     /**
      * Permet de récupérer le commentaire d'un auteur par rapport à une annonce
      *
-     * @param \App\Entity\User $author
+     * @param User $author
      *
      * @return Comment|null
      */

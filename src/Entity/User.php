@@ -2,13 +2,16 @@
 
 namespace App\Entity;
 
+use App\Entity\Ad;
+use App\Entity\Role;
+use App\Entity\Booking;
 use Cocur\Slugify\Slugify;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
-use Symfony\Component\Security\Core\User\UserInterface;
+use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
@@ -290,7 +293,7 @@ class User implements UserInterface
     /**
      * @return Collection|Role[]
      */
-    public function getUserRoles(): Collection
+    public function getUserRoles(): ArrayCollection
     {
         return $this->userRoles;
     }
@@ -347,7 +350,7 @@ class User implements UserInterface
     /**
      * @return Collection|Comment[]
      */
-    public function getComments(): Collection
+    public function getComments(): ArrayCollection
     {
         return $this->comments;
     }

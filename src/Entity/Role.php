@@ -54,7 +54,7 @@ class Role
     /**
      * @return Collection|User[]
      */
-    public function getUsers(): Collection
+    public function getUsers(): ArrayCollection
     {
         return $this->users;
     }
